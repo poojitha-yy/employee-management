@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+.admin-dashboard-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: 'Outfit', sans-serif;
+  background-color: #f8fafc;
+}
+
+.admin-dashboard-main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+  position: relative;
+}
+
+/* Cards Wrapper — 6-col grid for 3-top / 2-centered layout */
+.cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+  padding: 32px 32px 0;
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Row 1: each of the first 3 cards takes 2 of 6 columns */
+.admin-card {
+  grid-column: span 2;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Row 2: 4th card starts at col 2, 5th card starts at col 4
+   → columns 2-4 and 4-6 → two cards centered */
+.admin-card.card-offset-left {
+  grid-column: 2 / 4;
+}
+
+.admin-card.card-offset-left + .admin-card {
+  grid-column: 4 / 6;
+}
+
+
+
+.admin-card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #3b82f6;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.admin-card p {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: #1e293b;
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cards-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 20px 20px 0;
+  }
+
+  .admin-card,
+  .admin-card.card-offset-left,
+  .admin-card.card-offset-left + .admin-card {
+    grid-column: span 1;
+  }
+
+  .distribution-section {
+    padding: 0 20px 20px;
+  }
+}
